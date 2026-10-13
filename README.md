@@ -4,8 +4,10 @@ Phase 6B preparation records the confirmed public identity **Sohail Anwar**,
 `sohailanwar.ai@gmail.com`, and `https://github.com/Sohail-aiflow` in local defaults
 and social assets. The owner published the canonical Sanity Profile; token-free
 API reads and the real CMS build verify the identity and contacts. Repository
-creation/deployment are approved and pending account authentication; see
-[Phase 6B status](docs/phase-6b.md). No remote repository or live URL exists yet.
+creation/deployment are approved. The reviewed source is pushed to
+[the public GitHub repository](https://github.com/Sohail-aiflow/sohail-anwar-portfolio).
+Cloudflare setup and the assigned live URL remain pending; see
+[Phase 6B status](docs/phase-6b.md).
 
 Phase 6A adds launch-safe metadata, static social cards, robots/sitemap, local-font
 loading and measured accessibility/performance polish. No deployment has occurred.

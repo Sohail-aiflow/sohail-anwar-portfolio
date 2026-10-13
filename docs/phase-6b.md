@@ -1,9 +1,10 @@
 # Phase 6B — Deployment preparation and approval checkpoint
 
-Status: **not deployed**. Live URL: **not assigned**. Repository URL: **not created**.
+Status: **Cloudflare deployment pending**. Live URL: **not assigned**.
+Repository: [Sohail-aiflow/sohail-anwar-portfolio](https://github.com/Sohail-aiflow/sohail-anwar-portfolio), public.
 Repository creation, committing/pushing main and Cloudflare Pages Free deployment
-are explicitly owner-approved. No remote repository, Cloudflare resource, agent
-CMS mutation, push or website publication has completed yet.
+are explicitly owner-approved. GitHub repository creation and main push completed.
+No Cloudflare resource/deployment or agent CMS mutation has completed yet.
 
 ## Confirmed identity and required Studio edits
 
@@ -33,10 +34,10 @@ is authorized by this preparation step.
 
 ## Git and public-repository audit
 
-The existing Git repository has no commits, no tracked files, no remotes and an
+At the preapproval audit, the repository had no commits, tracked files, remotes and an
 unborn `master` branch. Project source, public social cards, tests and documentation
 are untracked pending approval. Reuse this local repository; create an initial
-reviewed commit and `main` branch only as part of the approved repository plan.
+reviewed commit and `main` branch were subsequently created under the approved plan.
 Official portable GitHub CLI 2.102.0 is prepared under ignored `.tools/gh/`, verified
 against the official SHA-256 checksum. It has no authenticated session yet. Browser
 automation failed twice with a sandbox helper error, so dashboard access is
@@ -191,3 +192,21 @@ authentication is complete without sending a code or token. The agent can then
 check repository conflicts and create/push only the approved repository. Sign in
 to Cloudflare locally as well; if browser automation remains unavailable, Pages
 project creation and GitHub integration will be guided for the owner to perform.
+
+## Verified GitHub publication
+
+GitHub API confirmed authentication as `Sohail-aiflow`. The target name was checked
+before creating the public repository. Reviewed source commit
+`edddaefd96816b2999897f5e39d16035855d4552` was pushed to `main` without force.
+GitHub confirms visibility PUBLIC and default branch main. Remote main matched
+the local commit exactly. Documentation-only status commits may follow this source
+commit under the same approved push authorization.
+
+The Cloudflare browser helper still fails to initialize, so Pages configuration
+requires owner dashboard actions. Use Workers & Pages → Create application →
+Pages → Import an existing Git repository, authorize only this repository and
+select the approved build settings. For the initial deployment leave `SITE_URL`
+unset and `SITE_INDEXABLE=false`. The owner has explicitly requested that indexing
+remain disabled until the assigned HTTPS URL is verified. After the dashboard
+reports a successful build, provide that actual URL for public QA and origin
+configuration. No assigned hostname or successful Cloudflare build is assumed.
