@@ -1,0 +1,277 @@
+.case-study {
+  padding-top: var(--space-8);
+}
+.case-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: var(--type-label);
+}
+.case-hero {
+  padding-bottom: var(--section-space);
+}
+.case-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  margin-top: var(--space-12);
+}
+.case-hero h1 {
+  font-size: clamp(2.75rem, 5.5vw, 5.25rem);
+  line-height: 1.1;
+  overflow-wrap: break-word;
+}
+.case-description {
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: var(--type-body);
+  line-height: 1.85;
+  margin: var(--space-6) 0 0;
+}
+.case-metadata {
+  margin: 0;
+  padding: var(--space-8);
+  display: grid;
+  gap: var(--space-6);
+}
+.case-metadata dt {
+  color: var(--muted);
+  font-size: var(--type-caption);
+  margin-bottom: var(--space-2);
+}
+.case-metadata dd {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.case-metadata .project-status {
+  font-size: 0.875rem;
+}
+.case-artwork {
+  height: 330px;
+  min-height: 330px;
+  border-radius: var(--radius-large);
+  border: 1px solid var(--glass-border);
+}
+.case-artwork .art-orbit {
+  width: 300px;
+  height: 300px;
+}
+.case-artwork .orbit-two {
+  width: 420px;
+  height: 420px;
+}
+.case-artwork-note {
+  font-size: var(--type-caption);
+  color: var(--muted);
+  margin: var(--space-4) 0 var(--space-12);
+}
+.case-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: var(--space-12);
+  padding-block: var(--space-12);
+  border-top: 1px solid var(--border);
+}
+.case-section h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.25;
+}
+.case-section-content {
+  min-width: 0;
+  max-width: 70ch;
+}
+.case-section-content p {
+  font-size: var(--type-body);
+  line-height: 1.9;
+  margin: 0 0 var(--space-6);
+}
+.case-section-content p:last-child {
+  margin-bottom: 0;
+}
+.case-section-content h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 var(--space-3);
+}
+.case-section-content > ul:not(.technology-list) {
+  padding-left: 1.25rem;
+  margin: 0 0 var(--space-6);
+  list-style: disc;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+.case-section-content li {
+  padding-bottom: 0.25rem;
+}
+.case-section-content .case-feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-8);
+}
+.case-muted {
+  color: var(--muted);
+}
+.case-role {
+  font-weight: 500;
+}
+.case-section-content .case-technologies {
+  margin: 0;
+}
+.case-technologies li {
+  font-size: 0.8125rem;
+  padding: 0.5rem 0.75rem;
+}
+.case-section-content .case-link-note {
+  font-size: var(--type-caption);
+  color: var(--muted);
+}
+.media-pending {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+}
+.media-pending > svg {
+  flex-shrink: 0;
+  color: var(--accent);
+  margin-top: var(--space-1);
+}
+.media-pending .media-pending-title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin: 0 0 var(--space-2);
+}
+.media-pending p:last-child {
+  color: var(--muted);
+  font-size: var(--type-label);
+  line-height: 1.8;
+}
+.project-gallery {
+  display: grid;
+  gap: var(--space-8);
+  margin-bottom: var(--space-6);
+}
+.project-gallery figure {
+  margin: 0;
+}
+.evidence-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+}
+.project-gallery figcaption {
+  margin-top: var(--space-3);
+  color: var(--muted);
+  font-size: var(--type-caption);
+  line-height: 1.8;
+}
+.project-navigation {
+  border-top: 1px solid var(--border);
+  padding-block: var(--section-space);
+}
+.project-navigation h2 {
+  margin-bottom: var(--space-8);
+}
+.project-navigation ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-8);
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+}
+.project-navigation li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 80px;
+  padding-block: var(--space-4);
+  border-block: 1px solid var(--border);
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-decoration: none;
+  line-height: 1.25;
+}
+.project-navigation li svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.not-found-page {
+  min-height: 65svh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-6);
+  padding-block: var(--space-12);
+}
+.not-found-page h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+.not-found-page p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+@media (max-width: 1023px) {
+  .case-hero-grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+  .case-metadata {
+    padding: var(--space-6);
+  }
+  .case-section {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: var(--space-8);
+  }
+  .project-navigation ul {
+    gap: var(--space-4);
+  }
+}
+@media (max-width: 767px) {
+  .case-study {
+    padding-top: var(--space-4);
+  }
+  .case-hero-grid {
+    grid-template-columns: 1fr;
+    margin-top: var(--space-8);
+  }
+  .case-hero h1 {
+    font-size: clamp(2.5rem, 10vw, 3.75rem);
+  }
+  .case-metadata {
+    gap: var(--space-4);
+  }
+  .case-artwork {
+    height: 260px;
+    min-height: 260px;
+  }
+  .case-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding-block: var(--space-8);
+  }
+  .case-section-content .case-feature-list {
+    grid-template-columns: 1fr;
+  }
+  .media-pending {
+    padding: var(--space-4);
+  }
+  .project-navigation ul {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}

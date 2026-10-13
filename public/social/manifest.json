@@ -1,0 +1,31 @@
+{
+  "width": 1200,
+  "height": 630,
+  "cards": [
+    {
+      "slug": "portfolio",
+      "title": "Sohail Anwar · Portfolio",
+      "subtitle": "Student software developer"
+    },
+    {
+      "slug": "marketlink-team",
+      "title": "MarketLink — Team Project",
+      "subtitle": "A team project developed by three people, including me."
+    },
+    {
+      "slug": "car-rental-system",
+      "title": "Car Rental System",
+      "subtitle": "Car, customer, and rental management."
+    },
+    {
+      "slug": "school-website-cms",
+      "title": "School Website & CMS",
+      "subtitle": "A public school website and administrative content management."
+    },
+    {
+      "slug": "marketlink-solo",
+      "title": "MarketLink — Solo Project",
+      "subtitle": "An independently developed MarketLink project, separate from the team project."
+    }
+  ]
+}

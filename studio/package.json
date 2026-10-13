@@ -1,0 +1,29 @@
+{
+  "name": "sohail-portfolio-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "sanity": "^6.19.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "styled-components": "^6.1.15"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/node": "^26.6.5"
+  },
+  "overrides": {
+    "@vercel/frameworks": {
+      "smol-toml": "^1.9.1",
+      "js-yaml": "^3.15.2"
+    }
+  }
+}
