@@ -28,6 +28,7 @@ import { EditorialHeader } from "@/components/layout/editorial-header";
 import { Atmosphere } from "@/components/layout/atmosphere";
 import { pageMetadata } from "@/lib/seo";
 import { getPortfolioContent } from "@/lib/content/repository";
+import { themeBootstrap } from "@/lib/theme";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { profile } = await getPortfolioContent();
@@ -48,7 +49,17 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const { profile } = await getPortfolioContent();
   return (
-    <html lang="en" className={`${bodyFont.variable} ${displayFont.variable}`}>
+    <html
+      lang="en"
+      className={`${bodyFont.variable} ${displayFont.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          id="theme-bootstrap"
+          dangerouslySetInnerHTML={{ __html: themeBootstrap }}
+        />
+      </head>
       <body>
         <a className="skip-link" href="#main">
           Skip to content

@@ -8,7 +8,10 @@ export function Education({
   records: readonly EducationRecord[];
 }) {
   return (
-    <section className="education" aria-labelledby="education-title">
+    <section
+      className="education editorial-panel editorial-panel-peach"
+      aria-labelledby="education-title"
+    >
       <div className="education-heading">
         <IconTreatment>
           <GraduationCap size={22} aria-hidden="true" />
@@ -25,7 +28,9 @@ export function Education({
                 {[record.startDate, record.endDate].filter(Boolean).join(" – ")}
               </p>
             )}
-            {record.description && <p>{record.description}</p>}
+            {record.description && (
+              <p className="education-description">{record.description}</p>
+            )}
             {records.length > 1 && (
               <p className="education-status">{record.status}</p>
             )}

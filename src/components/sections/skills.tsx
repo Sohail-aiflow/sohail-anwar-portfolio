@@ -49,6 +49,7 @@ export function Skills({
           eyebrow="Skills & experience"
           title={homepage.skillsTitle}
           description={homepage.skillsDescription}
+          descriptionClassName="editorial-caption"
         />
         <p className="section-side-note">
           Exposure & practice.

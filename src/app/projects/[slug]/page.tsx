@@ -75,11 +75,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <p className="case-artwork-note">
           Concept artwork only. Genuine project screenshots are pending.
         </p>
-        <CaseStudySection id="overview-title" title="The overview">
+        <CaseStudySection
+          id="overview-title"
+          title="The overview"
+          treatment="overview"
+        >
           <p>{content.overview}</p>
         </CaseStudySection>
         {content.purpose && (
-          <CaseStudySection id="purpose-title" title="Purpose & scope">
+          <CaseStudySection
+            id="purpose-title"
+            title="Purpose & scope"
+            treatment="purpose"
+          >
             <p>{content.purpose}</p>
           </CaseStudySection>
         )}
@@ -94,7 +102,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   ))}
                 </ul>
               )}
-              {content.contributionNote && <p>{content.contributionNote}</p>}
+              {content.contributionNote && (
+                <p className="case-editorial-note">
+                  {content.contributionNote}
+                </p>
+              )}
             </>
           ) : (
             <p className="case-muted">
@@ -136,7 +148,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           )}
         </CaseStudySection>
         {content.technicalApproach && content.technicalApproach.length > 0 && (
-          <CaseStudySection id="approach-title" title="Technical approach">
+          <CaseStudySection
+            id="approach-title"
+            title="Technical approach"
+            treatment="approach"
+          >
             {content.technicalApproach.map(({ heading, body }) => (
               <div key={heading}>
                 <h3>{heading}</h3>
@@ -149,6 +165,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <CaseStudySection
             id="challenges-title"
             title="Challenges & decisions"
+            treatment="decisions"
           >
             {content.challenges.map(({ heading, body }) => (
               <div key={heading}>
@@ -179,7 +196,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </CaseStudySection>
         )}
         {content.lessonsLearned && content.lessonsLearned.length > 0 && (
-          <CaseStudySection id="lessons-title" title="Lessons learned">
+          <CaseStudySection
+            id="lessons-title"
+            title="Lessons learned"
+            treatment="learnings"
+          >
             {content.lessonsLearned.map(({ heading, body }) => (
               <div key={heading}>
                 <h3>{heading}</h3>

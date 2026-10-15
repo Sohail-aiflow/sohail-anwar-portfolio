@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { House, Layers3, UserRound, Shapes, Send } from "lucide-react";
 import { navigationItems, type SectionId } from "@/data/navigation";
+import { ThemeToggle } from "./theme-toggle";
 
 const icons = {
   home: House,
@@ -93,43 +94,48 @@ export function FloatingNavigation() {
       data-floating={floating}
       aria-label="Primary"
     >
-      <ul className="navigation-list">
-        {navigationItems.map(({ id, label }) => {
-          const Icon = icons[id];
-          return (
-            <li key={id}>
-              <Link
-                href={`/#${id}`}
-                aria-current={
-                  pathname === "/" && active === id ? "location" : undefined
-                }
-                onClick={(event) => {
-                  if (
-                    event.metaKey ||
-                    event.ctrlKey ||
-                    event.shiftKey ||
-                    event.altKey
-                  )
-                    return;
-                  if (pathname !== "/") return;
-                  setActive(id);
-                  requestAnimationFrame(() =>
-                    document.getElementById(id)?.focus({ preventScroll: true }),
-                  );
-                }}
-              >
-                <Icon
-                  className="navigation-icon"
-                  size={19}
-                  strokeWidth={1.6}
-                  aria-hidden="true"
-                />
-                <span>{label}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="navigation-controls">
+        <ul className="navigation-list">
+          {navigationItems.map(({ id, label }) => {
+            const Icon = icons[id];
+            return (
+              <li key={id}>
+                <Link
+                  href={`/#${id}`}
+                  aria-current={
+                    pathname === "/" && active === id ? "location" : undefined
+                  }
+                  onClick={(event) => {
+                    if (
+                      event.metaKey ||
+                      event.ctrlKey ||
+                      event.shiftKey ||
+                      event.altKey
+                    )
+                      return;
+                    if (pathname !== "/") return;
+                    setActive(id);
+                    requestAnimationFrame(() =>
+                      document
+                        .getElementById(id)
+                        ?.focus({ preventScroll: true }),
+                    );
+                  }}
+                >
+                  <Icon
+                    className="navigation-icon"
+                    size={19}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <span>{label}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        <ThemeToggle />
+      </div>
     </nav>
   );
 }

@@ -37,19 +37,21 @@ export function Hero({
             emphasis={homepage.heroEmphasis}
           />
         </h1>
-        <p className="hero-copy">
-          {homepage.heroSupportingText.split("\n").map((line, index) => (
-            <Fragment key={index}>
-              {index > 0 && (
-                <>
-                  <br className="desktop-break" />{" "}
-                </>
-              )}
-              {line}
-            </Fragment>
-          ))}
-        </p>
-        <p className="hero-introduction">{profile.shortIntroduction}</p>
+        <div className="hero-story editorial-panel editorial-panel-blue">
+          <p className="hero-copy">
+            {homepage.heroSupportingText.split("\n").map((line, index) => (
+              <Fragment key={index}>
+                {index > 0 && (
+                  <>
+                    <br className="desktop-break" />{" "}
+                  </>
+                )}
+                {line}
+              </Fragment>
+            ))}
+          </p>
+          <p className="hero-introduction">{profile.shortIntroduction}</p>
+        </div>
         <div className="hero-actions">
           <LinkButton href="/#work" className="link-button-primary">
             Explore Work
@@ -59,24 +61,26 @@ export function Hero({
       </div>
       <aside className="hero-note glass-surface" aria-label="Areas of interest">
         <p className="eyebrow">Where my curiosity lives</p>
-        <div className="interest-line">
-          <IconTreatment>
-            <Code2 size={20} aria-hidden="true" />
-          </IconTreatment>
-          <span>Software that works.</span>
-        </div>
-        <div className="interest-line">
-          <IconTreatment>
-            <PenTool size={20} aria-hidden="true" />
-          </IconTreatment>
-          <span>Design that makes sense.</span>
-        </div>
-        <div className="interest-line">
-          <IconTreatment>
-            <Layers3 size={20} aria-hidden="true" />
-          </IconTreatment>
-          <span>Projects built together.</span>
-        </div>
+        <ul className="interest-list">
+          <li className="interest-line">
+            <IconTreatment>
+              <Code2 size={20} aria-hidden="true" />
+            </IconTreatment>
+            <span>Software that works.</span>
+          </li>
+          <li className="interest-line">
+            <IconTreatment>
+              <PenTool size={20} aria-hidden="true" />
+            </IconTreatment>
+            <span>Design that makes sense.</span>
+          </li>
+          <li className="interest-line">
+            <IconTreatment>
+              <Layers3 size={20} aria-hidden="true" />
+            </IconTreatment>
+            <span>Projects built together.</span>
+          </li>
+        </ul>
         <p className="hero-note-caption">
           Learning across the stack,
           <br />

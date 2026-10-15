@@ -11,6 +11,10 @@ export function About({
   profile: PortfolioProfile;
   heading: string;
 }) {
+  const introduction = profile.aboutIntroduction || profile.about[0];
+  const paragraphs = profile.aboutIntroduction
+    ? profile.about
+    : profile.about.slice(1);
   return (
     <section
       id="about"
@@ -35,10 +39,18 @@ export function About({
         )}
       </div>
       <div className="about-copy">
-        {profile.aboutIntroduction && <p>{profile.aboutIntroduction}</p>}
-        {profile.about.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
+        {introduction && (
+          <p className="about-introduction editorial-panel editorial-panel-sage">
+            {introduction}
+          </p>
+        )}
+        {paragraphs.length > 0 && (
+          <div className="about-body">
+            {paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        )}
         <p className="about-signoff">Still learning. Always building.</p>
         {profile.location && <p>{profile.location}</p>}
         {profile.resumeUrl && (

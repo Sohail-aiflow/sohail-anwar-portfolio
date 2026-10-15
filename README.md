@@ -1,4 +1,4 @@
-# Personal portfolio — Phases 1–6A
+# Personal portfolio — Phases 1–6E
 
 Phase 6B preparation records the confirmed public identity **Sohail Anwar**,
 `sohailanwar.ai@gmail.com`, and `https://github.com/Sohail-aiflow` in local defaults
@@ -8,6 +8,11 @@ creation/deployment are approved. The reviewed source is pushed to
 [the public GitHub repository](https://github.com/Sohail-aiflow/sohail-anwar-portfolio).
 Cloudflare setup and the assigned live URL remain pending; see
 [Phase 6B status](docs/phase-6b.md).
+
+The owner has approved the Phase 6B–6D dual themes, navigation refinements, and
+editorial surfaces. See [Phase 6E production verification](docs/phase-6e-production-verification.md)
+for the latest verification and GitHub status. Cloudflare deployment remains a
+separate, pending step.
 
 Phase 6A adds launch-safe metadata, static social cards, robots/sitemap, local-font
 loading and measured accessibility/performance polish. No deployment has occurred.
@@ -148,4 +153,4 @@ Root production dependency audit reports zero findings; five earlier development
 lint-chain findings remain. Studio tooling has 16 unresolved findings after
 compatible parser updates; details and dependency paths are in the Phase 5 report.
 No forced major downgrade or framework migration was performed. Phase 6A makes no
-remote content changes; hosting, webhooks and Phase 6B remain unconfigured.
+remote content changes; Cloudflare hosting and webhooks remain unconfigured.

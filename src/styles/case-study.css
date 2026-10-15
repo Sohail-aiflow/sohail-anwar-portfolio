@@ -26,10 +26,10 @@
   overflow-wrap: break-word;
 }
 .case-description {
-  max-width: 46ch;
+  max-width: 44ch;
   color: var(--muted);
   font-size: var(--type-body);
-  line-height: 1.85;
+  line-height: 1.75;
   margin: var(--space-6) 0 0;
 }
 .case-metadata {
@@ -83,11 +83,11 @@
 }
 .case-section-content {
   min-width: 0;
-  max-width: 70ch;
+  max-width: 60ch;
 }
 .case-section-content p {
   font-size: var(--type-body);
-  line-height: 1.9;
+  line-height: 1.75;
   margin: 0 0 var(--space-6);
 }
 .case-section-content p:last-child {
@@ -118,7 +118,47 @@
   color: var(--muted);
 }
 .case-role {
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--accent);
+}
+#overview-title + .case-section-content > p {
+  font-size: clamp(1.125rem, 1.7vw, 1.3rem);
+  line-height: 1.65;
+}
+.case-section-overview .case-section-content {
+  align-self: start;
+}
+.case-section-purpose .case-section-content {
+  padding-inline-start: clamp(1.25rem, 2vw, 1.75rem);
+  border-inline-start: 2px solid var(--accent);
+}
+.case-section-content > div + div {
+  margin-top: var(--space-8);
+}
+.case-section-approach .case-section-content > div + div,
+.case-section-learnings .case-section-content > div + div {
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--editorial-border);
+}
+.case-section-approach h3,
+.case-section-learnings h3 {
+  color: var(--accent);
+}
+.case-section-decisions .case-section-content > div {
+  padding-inline-start: clamp(1.25rem, 2vw, 1.75rem);
+  border-inline-start: 2px solid var(--editorial-peach);
+}
+.case-section-content > .case-editorial-note {
+  font-size: 1rem;
+  color: var(--muted);
+  padding: var(--space-4) var(--space-6);
+  background: var(--surface-secondary);
+  border-inline-start: 2px solid var(--accent);
+  border-radius: var(--radius-small);
+}
+.case-feature-list li {
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--border);
 }
 .case-section-content .case-technologies {
   margin: 0;
@@ -207,7 +247,18 @@
 }
 .project-navigation li svg {
   flex-shrink: 0;
-  color: var(--accent);
+  color: inherit;
+}
+@media (hover: hover) {
+  .project-navigation li a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+.case-back:hover,
+.case-back:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
 }
 .not-found-page {
   min-height: 65svh;

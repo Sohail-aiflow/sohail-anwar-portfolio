@@ -1,20 +1,54 @@
 :root {
-  --background: #fcfcf9;
-  --foreground: #252d2c;
-  --muted: #5d6663;
-  --accent: #496455;
-  --accent-soft: #e9efea;
-  --glow-blue: #dce9fa;
-  --glow-pink: #f5e0ed;
-  --glow-sage: #e3eee5;
-  --glow-peach: #fae8dc;
-  --glow-lavender: #eae3f5;
-  --glass: rgb(255 255 255 / 82%);
-  --border: #dde2dc;
-  --glass-border: rgb(255 255 255 / 90%);
-  --shadow-soft: 0 12px 40px rgb(45 58 79 / 5%);
+  color-scheme: light;
+  --background: #f0eee8;
+  --surface: #faf8f2;
+  --surface-secondary: #e7e8e1;
+  --foreground: #222a35;
+  --muted: #45515f;
+  --accent: #3f6555;
+  --accent-hover: #315342;
+  --on-accent: #fffaf0;
+  --accent-soft: #dce6dc;
+  --glow-blue: #bdcadc;
+  --glow-pink: #e4bbb3;
+  --glow-sage: #c1d3c8;
+  --glow-peach: #e7c9b6;
+  --glow-lavender: #d4c9e2;
+  --glass: rgb(250 248 242 / 88%);
+  --button-surface: rgb(250 248 242 / 82%);
+  --border: #c5cdc5;
+  --glass-border: rgb(124 145 131 / 35%);
+  --shadow-soft: 0 12px 40px rgb(45 58 60 / 8%);
   --shadow-floating:
-    0 4px 6px rgb(37 45 44 / 3%), 0 12px 32px rgb(37 45 44 / 9%);
+    0 4px 6px rgb(37 45 44 / 5%), 0 12px 32px rgb(37 45 44 / 13%);
+  --art-highlight: rgb(250 248 242 / 65%);
+  --art-blue-ink: #405a72;
+  --art-peach-ink: #77523e;
+  --art-lavender-ink: #66537d;
+  --art-object-shadow: 12px 18px 32px rgb(37 45 44 / 9%);
+  --experience-start: rgb(159 188 166 / 30%);
+  --experience-end: rgb(250 248 242 / 90%);
+  --connect-peach: rgb(217 173 163 / 38%);
+  --connect-pink: rgb(185 171 207 / 28%);
+  --glow-opacity: 0.78;
+  --hero-blue: #a8bdd5;
+  --hero-lavender: #b4a3c9;
+  --hero-sage: #abc5b2;
+  --hero-peach: #e5bda8;
+  --hero-note-sheen: rgb(255 250 240 / 30%);
+  --navigation-hover: rgb(63 101 85 / 8%);
+  --action-primary-bg: #3f6555;
+  --action-primary-hover: #315342;
+  --action-primary-text: #fffaf0;
+  --action-primary-border: #3f6555;
+  --action-secondary-bg: #faf8f2;
+  --action-secondary-hover: #e7eee4;
+  --editorial-blue: rgb(152 174 203 / 18%);
+  --editorial-sage: rgb(140 175 151 / 20%);
+  --editorial-lavender: rgb(177 159 200 / 18%);
+  --editorial-peach: rgb(213 174 145 / 18%);
+  --editorial-border: #becbc7;
+  --editorial-sheen: rgb(255 250 240 / 75%);
   --type-display: clamp(3rem, 6.5vw, 5.75rem);
   --type-heading: clamp(2rem, 4vw, 3.5rem);
   --type-body: clamp(1rem, 1.4vw, 1.125rem);
@@ -40,6 +74,115 @@
   --duration-fast: 160ms;
   --duration-enter: 300ms;
   --ease-standard: cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #151b28;
+  --surface: #252e3d;
+  --surface-secondary: #1d2533;
+  --foreground: #f3f2ef;
+  --muted: #b5c2d4;
+  --accent: #99bbaa;
+  --accent-hover: #b0cbbd;
+  --on-accent: #142821;
+  --accent-soft: #293c39;
+  --glow-blue: #283f5b;
+  --glow-pink: #493545;
+  --glow-sage: #273d36;
+  --glow-peach: #44332e;
+  --glow-lavender: #3b3455;
+  --glass: rgb(37 46 61 / 92%);
+  --button-surface: rgb(37 46 61 / 90%);
+  --border: #465365;
+  --glass-border: rgb(151 175 194 / 26%);
+  --shadow-soft: 0 12px 40px rgb(5 10 20 / 18%);
+  --shadow-floating:
+    0 4px 6px rgb(5 10 20 / 12%), 0 12px 32px rgb(5 10 20 / 30%);
+  --art-highlight: rgb(59 74 94 / 65%);
+  --art-blue-ink: #a9bedf;
+  --art-peach-ink: #dab7a1;
+  --art-lavender-ink: #c5b4de;
+  --art-object-shadow: 12px 18px 32px rgb(5 10 20 / 22%);
+  --experience-start: rgb(53 91 75 / 45%);
+  --experience-end: rgb(37 46 61 / 90%);
+  --connect-peach: rgb(104 74 63 / 24%);
+  --connect-pink: rgb(78 66 102 / 24%);
+  --glow-opacity: 0.9;
+  --hero-blue: #304c6a;
+  --hero-lavender: #4c4064;
+  --hero-sage: #2d4d43;
+  --hero-peach: #604735;
+  --hero-note-sheen: rgb(153 187 170 / 6%);
+  --navigation-hover: rgb(153 187 170 / 10%);
+  --action-primary-bg: #335549;
+  --action-primary-hover: #3e6657;
+  --action-primary-text: #f3f2ef;
+  --action-primary-border: #557c69;
+  --action-secondary-bg: #252e3d;
+  --action-secondary-hover: #2c3d39;
+  --editorial-blue: rgb(126 158 195 / 12%);
+  --editorial-sage: rgb(125 167 143 / 12%);
+  --editorial-lavender: rgb(158 141 187 / 12%);
+  --editorial-peach: rgb(197 151 119 / 10%);
+  --editorial-border: #465c68;
+  --editorial-sheen: rgb(178 194 213 / 8%);
+}
+
+/* No-script visitors still receive their system palette. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --background: #151b28;
+    --surface: #252e3d;
+    --surface-secondary: #1d2533;
+    --foreground: #f3f2ef;
+    --muted: #b5c2d4;
+    --accent: #99bbaa;
+    --accent-hover: #b0cbbd;
+    --on-accent: #142821;
+    --accent-soft: #293c39;
+    --glow-blue: #283f5b;
+    --glow-pink: #493545;
+    --glow-sage: #273d36;
+    --glow-peach: #44332e;
+    --glow-lavender: #3b3455;
+    --glass: rgb(37 46 61 / 92%);
+    --button-surface: rgb(37 46 61 / 90%);
+    --border: #465365;
+    --glass-border: rgb(151 175 194 / 26%);
+    --shadow-soft: 0 12px 40px rgb(5 10 20 / 18%);
+    --shadow-floating:
+      0 4px 6px rgb(5 10 20 / 12%), 0 12px 32px rgb(5 10 20 / 30%);
+    --art-highlight: rgb(59 74 94 / 65%);
+    --art-blue-ink: #a9bedf;
+    --art-peach-ink: #dab7a1;
+    --art-lavender-ink: #c5b4de;
+    --art-object-shadow: 12px 18px 32px rgb(5 10 20 / 22%);
+    --experience-start: rgb(53 91 75 / 45%);
+    --experience-end: rgb(37 46 61 / 90%);
+    --connect-peach: rgb(104 74 63 / 24%);
+    --connect-pink: rgb(78 66 102 / 24%);
+    --glow-opacity: 0.9;
+    --hero-blue: #304c6a;
+    --hero-lavender: #4c4064;
+    --hero-sage: #2d4d43;
+    --hero-peach: #604735;
+    --hero-note-sheen: rgb(153 187 170 / 6%);
+    --navigation-hover: rgb(153 187 170 / 10%);
+    --action-primary-bg: #335549;
+    --action-primary-hover: #3e6657;
+    --action-primary-text: #f3f2ef;
+    --action-primary-border: #557c69;
+    --action-secondary-bg: #252e3d;
+    --action-secondary-hover: #2c3d39;
+    --editorial-blue: rgb(126 158 195 / 12%);
+    --editorial-sage: rgb(125 167 143 / 12%);
+    --editorial-lavender: rgb(158 141 187 / 12%);
+    --editorial-peach: rgb(197 151 119 / 10%);
+    --editorial-border: #465c68;
+    --editorial-sheen: rgb(178 194 213 / 8%);
+  }
 }
 
 @theme inline {

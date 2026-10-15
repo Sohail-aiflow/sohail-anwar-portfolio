@@ -39,6 +39,7 @@ export function SelectedWork({
           eyebrow="Selected work"
           title={heading}
           description={description}
+          descriptionClassName="editorial-strip"
         />
         <p className="section-side-note">
           Independent & collaborative
