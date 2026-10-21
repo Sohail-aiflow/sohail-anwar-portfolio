@@ -1,5 +1,4 @@
 import { ContentImage } from "@/components/ui/content-image";
-import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { PortfolioProfile } from "@/types/portfolio";
 import { LinkButton } from "@/components/ui/link-button";
@@ -28,7 +27,6 @@ export function About({
           From the first sketch
           <br />
           to the logic behind it.
-          <ArrowUpRight size={20} aria-hidden="true" />
         </p>
         {profile.portrait && (
           <ContentImage

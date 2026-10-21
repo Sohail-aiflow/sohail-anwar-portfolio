@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import { LinkButton } from "@/components/ui/link-button";
 import type { HomepageContent, PortfolioProfile } from "@/types/portfolio";
 import { EditorialTitle } from "@/components/ui/editorial-title";
@@ -25,7 +24,6 @@ export function Connect({
             emphasis={homepage.connectEmphasis}
           />
         </h2>
-        <ArrowUpRight size={64} strokeWidth={1} aria-hidden="true" />
       </div>
       <div className="connect-body editorial-panel editorial-panel-lavender">
         <p className="connect-copy">{homepage.connectMessage}</p>

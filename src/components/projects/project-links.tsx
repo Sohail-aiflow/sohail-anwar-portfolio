@@ -34,7 +34,8 @@ export function ProjectLinks({ project }: { project: Project }) {
       </div>
       <p className="case-link-note">
         External links open in a new tab.
-        {project.liveUrlVerified === false &&
+        {project.liveUrl &&
+          project.liveUrlVerified === false &&
           " Public access to the supplied live URL has not been independently verified."}
       </p>
     </>

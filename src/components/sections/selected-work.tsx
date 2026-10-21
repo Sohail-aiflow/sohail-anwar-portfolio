@@ -26,6 +26,31 @@ export function SelectedWork({
   description: string;
 }) {
   const [selected, setSelected] = useState(projects[0]?.id);
+
+  function selectProject(projectId: string, focusDetails = false) {
+    setSelected(projectId);
+    if (!window.matchMedia("(max-width: 767px)").matches) return;
+
+    // Wait for the checked radio's panel to become visible. Also reveal an
+    // already selected project when its label is deliberately activated again.
+    requestAnimationFrame(() => {
+      const details = document
+        .getElementById(`preview-${projectId}`)
+        ?.querySelector<HTMLElement>(".preview-details");
+      if (!details?.getClientRects().length) return;
+      if (focusDetails)
+        details
+          .querySelector<HTMLElement>("h3")
+          ?.focus({ preventScroll: true });
+      details.scrollIntoView({
+        block: "start",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+    });
+  }
+
   return (
     <section
       id="work"
@@ -68,6 +93,15 @@ export function SelectedWork({
                 checked={selected === project.id}
                 onChange={() => setSelected(project.id)}
                 onFocus={() => setSelected(project.id)}
+                onKeyDown={(event) => {
+                  if (
+                    (event.key === " " || event.key === "Enter") &&
+                    window.matchMedia("(max-width: 767px)").matches
+                  ) {
+                    event.preventDefault();
+                    selectProject(project.id, true);
+                  }
+                }}
                 aria-labelledby={`project-title-${project.id}`}
                 aria-describedby={`project-context-${project.id} project-status-${project.id}`}
                 aria-controls={`preview-${project.id}`}
@@ -76,6 +110,7 @@ export function SelectedWork({
                 className="project-choice"
                 htmlFor={`select-${project.id}`}
                 style={{ gridRow: index + 1 }}
+                onClick={() => selectProject(project.id)}
                 onPointerMove={(event) => {
                   // Scrolling under a stationary pointer must not change the
                   // selected panel while its case-study link is being activated.

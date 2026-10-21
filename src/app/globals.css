@@ -350,6 +350,7 @@ h2 {
 @media (max-width: 767px) {
   :root {
     --anchor-offset: 2rem;
+    --section-anchor-clearance: 1.5rem;
   }
   body {
     padding-bottom: var(--dock-clearance);

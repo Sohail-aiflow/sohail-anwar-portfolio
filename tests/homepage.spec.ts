@@ -125,7 +125,7 @@ test("project links are factual and safe, and contacts reflect published content
 }) => {
   await page.goto("/");
   const demo = page.getByRole("link", {
-    name: "Live Demo — MarketLink — Team Project",
+    name: "Live Demo — MarketLink — Team Project (opens in a new tab)",
     exact: true,
   });
   await expect(demo).toHaveAttribute(

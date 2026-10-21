@@ -200,6 +200,16 @@
   gap: var(--space-8);
   margin-bottom: var(--space-6);
 }
+.case-documentation {
+  margin-block: var(--space-8);
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  background: var(--surface-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+}
+.case-documentation > .case-section:first-child {
+  border-top: 0;
+}
 .project-gallery figure {
   margin: 0;
 }

@@ -10,7 +10,7 @@ const routes = [
 ];
 const themeRoot = "html";
 for (const theme of ["light", "dark"] as const) {
-  for (const width of [320, 375, 768, 1024, 1440]) {
+  for (const width of [320, 375, 430, 768, 1024, 1440]) {
     test(`${theme} theme: all five pages at ${width}px`, async ({
       page,
     }, testInfo) => {

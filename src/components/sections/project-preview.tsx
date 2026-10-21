@@ -13,7 +13,9 @@ export function ProjectPreview({ project }: { project: Project }) {
     >
       <ProjectArtwork projectId={project.id} />
       <div className="preview-details">
-        <h3 id={`preview-title-${project.id}`}>{project.title}</h3>
+        <h3 id={`preview-title-${project.id}`} tabIndex={-1}>
+          {project.title}
+        </h3>
         <p>{project.description}</p>
         {project.technologies.length > 0 && (
           <ul className="technology-list" aria-label="Technology stack">
@@ -51,14 +53,16 @@ export function ProjectPreview({ project }: { project: Project }) {
             </LinkButton>
           )}
         </div>
-        {project.liveUrl && project.liveUrlVerified === false && (
+        <div className="preview-evidence" aria-label="Project evidence notes">
+          {project.liveUrl && project.liveUrlVerified === false && (
+            <p className="preview-note">
+              Provided project URL; public access has not been verified.
+            </p>
+          )}
           <p className="preview-note">
-            Provided project URL; public access has not been verified.
+            Artwork is conceptual. Project screenshots are pending.
           </p>
-        )}
-        <p className="preview-note">
-          Artwork is conceptual. Project screenshots are pending.
-        </p>
+        </div>
       </div>
     </div>
   );

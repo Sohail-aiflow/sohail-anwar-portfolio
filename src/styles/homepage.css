@@ -94,8 +94,21 @@
   color: var(--foreground);
   text-decoration: none;
 }
+.preview-evidence {
+  margin-top: var(--space-6);
+  padding-inline-start: var(--space-4);
+  border-inline-start: 1px solid var(--border);
+}
+.preview-evidence .preview-note + .preview-note {
+  margin-top: var(--space-2);
+}
 .homepage-section {
   padding-block: var(--section-space);
+  /* Land on the section's content, rather than its padded outer edge. */
+  scroll-margin-top: calc(
+    var(--section-anchor-clearance) - var(--anchor-offset) -
+      var(--section-space)
+  );
   border-top: 1px solid var(--border);
 }
 .section-topline {
@@ -358,9 +371,6 @@
   max-width: 430px;
 }
 .about-margin-note {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
   color: var(--muted);
   line-height: 1.7;
   font-size: var(--type-caption);
@@ -487,6 +497,8 @@
 }
 .connect-section {
   position: relative;
+  /* Keep the final heading reachable without clamping at the document end. */
+  min-height: calc(100svh - var(--section-anchor-clearance));
   padding-bottom: clamp(4rem, 9vw, 8rem);
 }
 .connect-section::before {
@@ -508,10 +520,6 @@
 .connect-heading h2 {
   font-size: clamp(2.5rem, 5.5vw, 5rem);
   max-width: 830px;
-}
-.connect-heading > svg {
-  flex-shrink: 0;
-  color: var(--accent);
 }
 .connect-copy {
   max-width: 52ch;
@@ -731,11 +739,6 @@
   }
   .connect-heading {
     align-items: flex-start;
-  }
-  .connect-heading > svg {
-    width: 30px;
-    height: 30px;
-    margin-top: 5px;
   }
   .connect-heading h2 {
     font-size: clamp(2.35rem, 9vw, 3.5rem);

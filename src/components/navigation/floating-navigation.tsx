@@ -51,11 +51,16 @@ export function FloatingNavigation() {
           parseFloat(
             getComputedStyle(document.documentElement).scrollPaddingTop,
           ) || 0;
+        const margin =
+          parseFloat(getComputedStyle(requested).scrollMarginTop) || 0;
         const destination = Math.min(
           maximumScroll,
           Math.max(
             0,
-            requested.getBoundingClientRect().top + window.scrollY - offset,
+            requested.getBoundingClientRect().top +
+              window.scrollY -
+              offset -
+              margin,
           ),
         );
         if (Math.abs(window.scrollY - destination) < 3) {
@@ -115,6 +120,19 @@ export function FloatingNavigation() {
                       return;
                     if (pathname !== "/") return;
                     setActive(id);
+                    // Next's same-hash navigation can leave the viewport on a
+                    // project preview or another manually scrolled position.
+                    if (window.location.hash === `#${id}`) {
+                      event.preventDefault();
+                      document.getElementById(id)?.scrollIntoView({
+                        block: "start",
+                        behavior: window.matchMedia(
+                          "(prefers-reduced-motion: reduce)",
+                        ).matches
+                          ? "instant"
+                          : "smooth",
+                      });
+                    }
                     requestAnimationFrame(() =>
                       document
                         .getElementById(id)

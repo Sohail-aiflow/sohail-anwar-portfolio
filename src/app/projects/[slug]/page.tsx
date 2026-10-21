@@ -175,26 +175,32 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             ))}
           </CaseStudySection>
         )}
-        <CaseStudySection id="evidence-title" title="Evidence & media">
-          <ProjectMedia screenshots={project.screenshots} />
-          {content.evidenceNote && <p>{content.evidenceNote}</p>}
-        </CaseStudySection>
-        <CaseStudySection id="links-title" title="Project links">
-          <ProjectLinks project={project} />
-        </CaseStudySection>
-        {content.pending.length > 0 && (
-          <CaseStudySection id="pending-title" title="Still to document">
-            <p className="case-muted">
-              These details remain open rather than being presented as verified
-              facts.
-            </p>
-            <ul>
-              {content.pending.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+        <div
+          className="case-documentation"
+          role="group"
+          aria-label="Project evidence and documentation"
+        >
+          <CaseStudySection id="evidence-title" title="Evidence & media">
+            <ProjectMedia screenshots={project.screenshots} />
+            {content.evidenceNote && <p>{content.evidenceNote}</p>}
           </CaseStudySection>
-        )}
+          <CaseStudySection id="links-title" title="Project links">
+            <ProjectLinks project={project} />
+          </CaseStudySection>
+          {content.pending.length > 0 && (
+            <CaseStudySection id="pending-title" title="Still to document">
+              <p className="case-muted">
+                These details remain open rather than being presented as
+                verified facts.
+              </p>
+              <ul>
+                {content.pending.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </CaseStudySection>
+          )}
+        </div>
         {content.lessonsLearned && content.lessonsLearned.length > 0 && (
           <CaseStudySection
             id="lessons-title"

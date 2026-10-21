@@ -1,70 +1,67 @@
-# Personal portfolio — Phases 1–6E
+# Sohail Anwar - Portfolio
 
-Phase 6B preparation records the confirmed public identity **Sohail Anwar**,
-`sohailanwar.ai@gmail.com`, and `https://github.com/Sohail-aiflow` in local defaults
-and social assets. The owner published the canonical Sanity Profile; token-free
-API reads and the real CMS build verify the identity and contacts. Repository
-creation/deployment are approved. The reviewed source is pushed to
-[the public GitHub repository](https://github.com/Sohail-aiflow/sohail-anwar-portfolio).
-Cloudflare setup and the assigned live URL remain pending; see
-[Phase 6B status](docs/phase-6b.md).
+Student software developer portfolio built with Next.js static export, React, TypeScript, Tailwind CSS, and a separate Sanity Studio. The approved design uses local Newsreader/DM Sans fonts, light/dark themes, editorial surfaces, and four factual case studies.
 
-The owner has approved the Phase 6B–6D dual themes, navigation refinements, and
-editorial surfaces. See [Phase 6E production verification](docs/phase-6e-production-verification.md)
-for the latest verification and GitHub status. Cloudflare deployment remains a
-separate, pending step.
+- **Live:** https://sohail-anwar-portfolio.pages.dev/
+- **Source:** https://github.com/Sohail-aiflow/sohail-anwar-portfolio
+- **Approved release:** Phase 6F UX fixes and Phase 6G refinements are owner-approved for Phase 6H publication. See the release report for the actual commit, deployment, and live verification status.
+- **Owner decisions pending:** genuine project evidence and separately authorized CMS wording updates. Car Rental and School CMS ownership is confirmed as independent frontend, backend, and database development. Published CMS fields remain unchanged during this release. Indexing remains disabled; Studio is not deployed; no webhooks are configured.
 
-Phase 6A adds launch-safe metadata, static social cards, robots/sitemap, local-font
-loading and measured accessibility/performance polish. No deployment has occurred.
-Read [launch readiness and the predeployment checklist](docs/phase-6a.md).
+## Local setup
 
-Leave `SITE_URL` blank and `SITE_INDEXABLE=false` until an approved public HTTPS
-origin is selected. This safely exports noindex pages without fabricated canonical
-URLs. Set the real origin and enable indexing only for the approved launch build.
-Regenerate social title cards locally with `npm.cmd run social:generate` after
-changing names/titles/descriptions; committed PNGs need no Chrome on hosting builds.
-
-Phase 5.5 connected the real Free Sanity project and migrated 30 restricted seed
-records to canonical public IDs. All original records are retained. See the
-[live activation and migration report](docs/phase-5.5.md) for current verification
-and remaining limitations; older Phase 5 setup notes describe the initial state.
-
-Bright Frosted Editorial portfolio for an ACCP AI / Software Engineering student
-at Aptech. The homepage and four dedicated case studies use Next.js static export.
-Sanity published-content reads now run at build time, with credential-free local
-fallback. Studio is a separate application. Neither app has been deployed.
-
-## Development and verification
-
-Use Node 24 (tested) and npm. On Windows PowerShell, use `npm.cmd` if execution
-policy prevents running `npm.ps1`.
+Use Node 24 and npm. Windows PowerShell may require `npm.cmd` instead of `npm`. Copy `.env.example` to ignored `.env.local`; never commit credentials.
 
 ```powershell
 npm.cmd ci
 npm.cmd run dev
+```
+
+Development opens at http://localhost:3000. Explicit offline mode uses `PORTFOLIO_CONTENT_SOURCE=local`. Auto mode uses local facts when both CMS identifiers are blank. Configured CMS request/validation failures stop the build; missing optional fields/documents can retain factual local values with warnings that require review.
+
+| Variable                   | Purpose                                                                                |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| `PORTFOLIO_CONTENT_SOURCE` | `auto`, `local`, or required `sanity`                                                  |
+| `SANITY_PROJECT_ID`        | Public project ID; connected project `xc6vvvsv`                                        |
+| `SANITY_DATASET`           | Public published-content dataset: `production`                                         |
+| `SANITY_API_VERSION`       | Pinned API date: `2026-10-13`                                                          |
+| `SITE_URL`                 | Public HTTPS origin; local preparation uses `https://sohail-anwar-portfolio.pages.dev` |
+| `SITE_INDEXABLE`           | Keep `false`; configuring an origin alone does not enable indexing                     |
+
+Blank `SITE_URL` safely omits canonical/social-image origins. A valid origin emits per-page canonical URLs and existing social cards while noindex remains active. Changing domains requires changing this variable and rebuilding. Local values do not change Cloudflare production variables.
+
+## Build and verification
+
+```powershell
 npm.cmd run lint
 npm.cmd run typecheck
+npm.cmd run format
 npm.cmd run format:check
 npm.cmd run test:content
 npm.cmd run build
-npm.cmd run test:browser
+npm.cmd run test
 ```
 
-Development: http://localhost:3000. `npm.cmd run format` formats source.
-The production build creates `out/`; `next start` is not used. Browser tests use
-installed Chrome and a temporary loopback-only Python file server. Content tests
-are pure Node tests and need no browser, CMS credentials, or prebuilt export.
-Screenshots and failure traces are ignored under `test-results/`.
+Build output is `out/`, with the homepage, four case studies, robots/sitemap, social cards, and a 404 page. The build normalizes nested Windows export payloads. Do not use `next start`; no backend is required. Static preview:
 
-## Sanity setup
+```powershell
+python -m http.server 4173 --bind 127.0.0.1 --directory out
+```
 
-The portfolio builds without credentials. When both CMS environment fields are
-blank, existing local profile, homepage, projects, skills, and education remain
-the source of truth. No network request occurs.
+Stop that preview before browser tests; Playwright starts its own server on 4173. Browser tests use installed Chrome and Python. Content tests use Node fixtures/injected reads. To include real token-free Sanity verification:
 
-For CMS editing, create a **Free** Sanity project and public dataset yourself.
-Copy real IDs into root `.env.local` and `studio/.env.local` using their examples.
-No token is needed for public published-content reads. Install Studio separately:
+```powershell
+$env:VERIFY_LIVE_SANITY='1'
+npm.cmd run test
+Remove-Item Env:VERIFY_LIVE_SANITY
+```
+
+`npm.cmd run audit:performance -- label` measures the running loopback production preview with mobile/desktop Lighthouse. Record host, throttling, transfer conditions, and repeated runs before comparing scores. `npm.cmd run social:generate` regenerates approved editorial title cards locally; these are not project screenshots. Audit artifacts and traces are ignored under `test-results/`.
+
+## Sanity and production content updates
+
+Sanity Free project `xc6vvvsv`, public dataset `production`, supplies 32 canonical published documents. Published content is read at build time without a token. Canonical IDs are dot-free; archived dotted originals are excluded from normal editing and portfolio queries. Never reimport or change remote documents without specific owner authorization.
+
+Studio has a separate package and ignored `studio/.env.local`, with public `SANITY_STUDIO_PROJECT_ID` and `SANITY_STUDIO_DATASET`. Never put credentials in browser variables.
 
 ```powershell
 npm.cmd --prefix studio ci
@@ -73,84 +70,19 @@ npm.cmd run studio:typecheck
 npm.cmd run studio:build
 ```
 
-Studio opens at http://localhost:3333 and uses normal Sanity sign-in. Its build
-goes to `studio/dist/`; it does not deploy. Do not deploy the synthetic Studio
-verification build. `studio/seed.ndjson` contains 32 factual starter documents;
-`npm.cmd run cms:seed` regenerates it locally. Review the owner import instructions
-in [Phase 5](docs/phase-5.md) before performing any remote writes.
+Studio opens at http://localhost:3333 with normal Sanity sign-in. Its build produces `studio/dist/` without deploying it. The seed generator is not a routine publishing step; see [Phase 5.5](docs/phase-5.5.md).
 
-Root environment variables:
+Workflow: **edit, publish in Studio, verify public API, rebuild portfolio, then separately authorize deployment of new out/**. Publishing alone does not update live HTML. Cloudflare Pages hosts the current public portfolio on the Free plan. Source-build settings are `npm run build` and output `out`; configured builds need reviewed public CMS/origin/indexing values. Phase 6G does not change hosting settings, deploy, configure hooks, or enable indexing.
 
-- `PORTFOLIO_CONTENT_SOURCE`: auto (default), local (explicit offline), or sanity.
-- `SANITY_PROJECT_ID` and `SANITY_DATASET`: both blank for local, both set for CMS.
-- `SANITY_API_VERSION`: pinned API date, default 2026-10-13.
+## Source and evidence
 
-Studio uses only public `SANITY_STUDIO_PROJECT_ID` and `SANITY_STUDIO_DATASET`.
-Never put tokens in browser-exposed variables or commit environment files.
+- `src/app`: homepage, project routes, layout, metadata, robots/sitemap, 404.
+- `src/components`, `src/styles`: navigation, themes, editorial surfaces, case-study UI.
+- `src/data`, `src/content`: factual offline defaults.
+- `src/lib/content`, `src/lib/sanity`: validation, published queries, normalization, build-time repository.
+- `studio/`: separate editor, schemas, canonical document lists, reviewed seed tooling.
+- `tests/`, `docs/`: regression coverage and verification reports.
 
-Configured reads validate published content. Missing documents/fields preserve
-verified local records with warnings. Invalid content or failed configured reads
-stop the build instead of silently deploying stale facts. Explicit `local` mode
-is the documented offline alternative. Restart configured development after
-publishing; production updates always need a new build.
+Team and Solo MarketLink remain distinct; Solo is in progress. Concept illustrations are labeled and are not interface evidence. Screenshots, captions, repository URLs, and technical claims need owner verification. No professional employment or client use is implied.
 
-Workflow: **edit → publish → rebuild portfolio → deploy new out/**. Sanity
-publishing does not update deployed static HTML automatically. Hosting,
-deployments, and webhooks remain unconfigured.
-
-## Source map
-
-- `src/app`: layout, homepage, static project routes, 404, metadata, global styles.
-- `src/components`: existing design primitives, navigation, homepage sections,
-  reusable case-study/media components.
-- `src/content`, `src/data`: factual local fallback records and editable copy.
-- `src/types`: frontend portfolio/project models.
-- `src/lib/content`: local fallback, validation/normalization, image URLs, server-only repository.
-- `src/lib/sanity`: optional configuration, published-only query, build-time client.
-- `src/styles`: existing tokens and homepage/case-study styles.
-- `studio/`: separate package/lockfile, schemas, singleton structure, editor config,
-  environment example, factual starter import.
-
-Locally bundled Newsreader and DM Sans remain in place. No paid assets/plugins
-were introduced. Root CMS dependencies are @sanity/client, Zod, and server-only;
-editor dependencies are isolated in Studio. Motion was replaced by the equivalent
-reduced-motion-aware CSS navigation transition. Radix remains unnecessary.
-
-## Content and evidence
-
-The four original project identities/slugs are preserved. Complete new published
-projects can add static routes; featured/visibility and display-order fields
-control presentation. Project navigation and interactions stay in code.
-
-Local fallback records live in `src/data/projects.ts`; configured mode uses
-published documents through the adapter. Missing contact details, roles, stacks,
-repository links, screenshots, and case-study evidence are not invented.
-Concept artwork remains distinct from genuine screenshot galleries.
-
-Add real screenshots through Studio with alt text and captions, or add local
-`screenshots` records with src, alt, width, height, and optional caption. Sanity
-images use responsive CDN variants without a Next.js optimization server. The
-team MarketLink URL is still marked as unverified for public accessibility.
-
-Static hosting must serve `404.html` with HTTP 404 for unknown paths, not use a
-blanket SPA redirect. The build retains the idempotent Windows payload-copy step
-for Next.js export compatibility; no persistent server is required.
-
-## Reports and limitations
-
-See [architecture](docs/architecture.md), [Phase 2](docs/phase-2.md),
-[Phase 3](docs/phase-3.md), [Phase 4](docs/phase-4.md), and [Phase 5](docs/phase-5.md).
-
-Live published-content API reads and the real CMS-backed static build are verified
-in Phase 5.5, including the owner-operated edit/publish/restore workflow. Real asset
-upload and deployment remain unverified. Mocked content and local fallback are
-tested separately. Phase 6A adds automated accessibility/link/SEO checks and local
-mobile/desktop Lighthouse measurements; those are not complete WCAG certification.
-The owner should confirm the working display name, contact details, missing
-project facts, repository URLs, and genuine images.
-
-Root production dependency audit reports zero findings; five earlier development
-lint-chain findings remain. Studio tooling has 16 unresolved findings after
-compatible parser updates; details and dependency paths are in the Phase 5 report.
-No forced major downgrade or framework migration was performed. Phase 6A makes no
-remote content changes; Cloudflare hosting and webhooks remain unconfigured.
+See [Phase 6F](docs/phase-6f-ux-audit-and-proposals.md), [Phase 6G](docs/phase-6g-quality-refinement.md), [Phase 6H release verification](docs/phase-6h-release-verification.md), and [architecture](docs/architecture.md). Older reports describe historical checkpoints. Automated checks are not full WCAG certification or field Core Web Vitals. Older dependency audit findings are dated snapshots, not newly executed audit results.
