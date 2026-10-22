@@ -75,7 +75,7 @@ export function SelectedWork({
       <fieldset className="project-selector">
         <legend className="sr-only">Choose a project to preview</legend>
         <p className="selection-hint">
-          Choose a project to explore its details and abstract concept.
+          Choose a project to explore its details and case study.
         </p>
         <div
           className={`work-grid${projects.length ? "" : " work-grid-empty"}`}
@@ -94,6 +94,34 @@ export function SelectedWork({
                 onChange={() => setSelected(project.id)}
                 onFocus={() => setSelected(project.id)}
                 onKeyDown={(event) => {
+                  const direction =
+                    event.key === "ArrowDown" || event.key === "ArrowRight"
+                      ? 1
+                      : event.key === "ArrowUp" || event.key === "ArrowLeft"
+                        ? -1
+                        : 0;
+                  if (
+                    direction &&
+                    !event.altKey &&
+                    !event.ctrlKey &&
+                    !event.metaKey &&
+                    !event.shiftKey
+                  ) {
+                    // Native radio navigation scrolls our visually hidden inputs
+                    // into view. Keep native group order/wrapping, but control focus.
+                    event.preventDefault();
+                    const next =
+                      projects[
+                        (index + direction + projects.length) % projects.length
+                      ];
+                    if (next) {
+                      document
+                        .getElementById(`select-${next.id}`)
+                        ?.focus({ preventScroll: true });
+                      setSelected(next.id);
+                    }
+                    return;
+                  }
                   if (
                     (event.key === " " || event.key === "Enter") &&
                     window.matchMedia("(max-width: 767px)").matches
@@ -110,7 +138,13 @@ export function SelectedWork({
                 className="project-choice"
                 htmlFor={`select-${project.id}`}
                 style={{ gridRow: index + 1 }}
-                onClick={() => selectProject(project.id)}
+                onClick={(event) => {
+                  // Avoid the label's implicit focus-scroll to its clipped radio.
+                  // Preserve keyboard focus and the intentional mobile reveal.
+                  event.preventDefault();
+                  event.currentTarget.control?.focus({ preventScroll: true });
+                  selectProject(project.id);
+                }}
                 onPointerMove={(event) => {
                   // Scrolling under a stationary pointer must not change the
                   // selected panel while its case-study link is being activated.

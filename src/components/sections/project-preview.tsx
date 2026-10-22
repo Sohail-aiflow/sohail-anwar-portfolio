@@ -60,7 +60,9 @@ export function ProjectPreview({ project }: { project: Project }) {
             </p>
           )}
           <p className="preview-note">
-            Artwork is conceptual. Project screenshots are pending.
+            {project.screenshots?.length
+              ? "Concept artwork. View application screenshots in the case study."
+              : "Concept artwork. Application screenshots are not yet available."}
           </p>
         </div>
       </div>

@@ -36,11 +36,11 @@ for (const width of [320, 375, 768, 1024, 1440]) {
         preview.getByRole("heading", { name: title, exact: true }),
       ).toBeVisible();
       await expect(
-        preview.getByText("Preview pending", { exact: true }),
+        preview.getByText("Abstract concept", { exact: true }),
       ).toBeVisible();
       await expect(
         preview.getByText(
-          "Artwork is conceptual. Project screenshots are pending.",
+          "Concept artwork. View application screenshots in the case study.",
         ),
       ).toBeVisible();
       expect(

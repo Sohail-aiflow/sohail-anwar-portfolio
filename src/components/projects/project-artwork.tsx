@@ -27,7 +27,6 @@ export function ProjectArtwork({
       </div>
       <figcaption>
         <span>Abstract concept</span>
-        <span>Preview pending</span>
       </figcaption>
     </figure>
   );

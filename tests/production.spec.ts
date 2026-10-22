@@ -71,19 +71,31 @@ for (const width of [320, 375, 768, 1024, 1440]) {
           () => document.documentElement.scrollWidth <= innerWidth + 1,
         ),
       ).toBe(true);
-      expect(
-        await page
-          .locator("img")
-          .evaluateAll((images) =>
-            images.every(
-              (img) =>
-                Boolean(img.getAttribute("alt")) &&
-                img instanceof HTMLImageElement &&
-                img.complete &&
-                img.naturalWidth > 0,
+      for (const image of await page.locator("img").all()) {
+        await image.scrollIntoViewIfNeeded();
+        await expect
+          .poll(() =>
+            image.evaluate(
+              (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
             ),
+          )
+          .toBe(true);
+        // Thumbnails are redundant images inside explicitly labelled controls.
+        // Other images still require meaningful alternative text.
+        expect(
+          await image.evaluate(
+            (img) =>
+              Boolean(img.getAttribute("alt")?.trim()) ||
+              (img.getAttribute("alt") === "" &&
+                Boolean(
+                  img
+                    .closest(".gallery-thumbnails button")
+                    ?.getAttribute("aria-label")
+                    ?.trim(),
+                )),
           ),
-      ).toBe(true);
+        ).toBe(true);
+      }
     }
     expect(errors).toEqual([]);
   });

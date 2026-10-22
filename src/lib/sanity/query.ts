@@ -1,4 +1,4 @@
-const image = `{ "src": asset->url, alt, caption, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height }`;
+const image = `{ "id": _key, label, "src": asset->url, alt, caption, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height }`;
 const published = `!(_id match "*.*") && !(_id in path("drafts.**")) && !(_id in path("versions.**"))`;
 
 export const portfolioQuery = `{

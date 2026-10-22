@@ -14,7 +14,7 @@ const cases = [
     slug: "car-rental-system",
     title: "Car Rental System",
     status: "Complete",
-    role: "Role details awaiting confirmation",
+    role: "Solo full-stack developer",
     stack: ["ASP.NET Core MVC", "SQL Server"],
     functionality: ["Rental return workflow", "Data validation"],
   },
@@ -22,7 +22,7 @@ const cases = [
     slug: "school-website-cms",
     title: "School Website & CMS",
     status: "Complete",
-    role: "Role details awaiting confirmation",
+    role: "Solo full-stack developer",
     stack: ["PHP", "MySQL"],
     functionality: [
       "News",
@@ -37,7 +37,7 @@ const cases = [
     slug: "marketlink-solo",
     title: "MarketLink — Solo Project",
     status: "In progress",
-    role: "Independent developer",
+    role: "Solo developer",
     stack: ["MongoDB", "Express", "React", "Node.js"],
     functionality: [
       "Authentication and user roles",
@@ -83,9 +83,9 @@ for (const width of [320, 375, 768, 1024, 1440]) {
       for (const feature of project.functionality)
         await expect(page.locator(".case-feature-list")).toContainText(feature);
       await expect(
-        page.getByText("Project screenshots pending", { exact: true }),
+        page.getByRole("region", { name: "Application screenshot gallery" }),
       ).toBeVisible();
-      await expect(page.locator(".project-gallery img")).toHaveCount(0);
+      await expect(page.locator(".gallery-stage img")).toHaveCount(1);
       await expect(
         page.getByRole("heading", {
           name: "Challenges & decisions",
@@ -172,7 +172,7 @@ test("team and solo scopes, supplied demo URL, and pending facts stay accurate",
   await expect(demo).toHaveAttribute("target", "_blank");
   await expect(demo).toHaveAttribute("rel", "noopener noreferrer");
   await expect(page.locator(".case-link-note")).toContainText(
-    "has not been independently verified",
+    "External links open in a new tab.",
   );
   await page.goto("/projects/marketlink-solo/");
   await expect(

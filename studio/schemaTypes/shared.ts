@@ -9,6 +9,13 @@ export const portfolioImage = defineType({
     "Upload real project evidence or a real portrait. Do not use illustrative mockups as screenshots.",
   fields: [
     defineField({
+      name: "label",
+      title: "Short gallery label (optional)",
+      type: "string",
+      description:
+        "A short screen name for thumbnail navigation, such as Rentals or Admin dashboard.",
+    }),
+    defineField({
       name: "alt",
       title: "Alternative text",
       type: "string",

@@ -43,6 +43,8 @@ const optionalUrl = z.preprocess(
   externalUrlSchema.optional(),
 );
 const image = z.object({
+  id: optionalText,
+  label: optionalText,
   src: externalUrlSchema.refine((value) => {
     try {
       const url = new URL(value);

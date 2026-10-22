@@ -134,10 +134,12 @@ test("grouped evidence retains every limitation and native Back to top works wit
       name: "Project evidence and documentation",
       exact: true,
     });
-    await expect(documentation).toContainText("Project screenshots pending");
-    await expect(documentation).toContainText(
-      "The concept artwork above is not application evidence.",
-    );
+    await expect(
+      documentation.getByRole("region", {
+        name: "Application screenshot gallery",
+      }),
+    ).toBeVisible();
+    await expect(documentation).toContainText("Repository evidence");
     await expect(documentation.getByRole("heading", { level: 2 })).toHaveText([
       "Evidence & media",
       "Project links",

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 type EditorialTreatment =
-  "overview" | "purpose" | "approach" | "decisions" | "learnings";
+  "overview" | "purpose" | "approach" | "decisions" | "learnings" | "media";
 
 const treatmentSurfaces: Partial<Record<EditorialTreatment, string>> = {
   overview: "editorial-panel editorial-panel-blue",

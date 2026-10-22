@@ -1,7 +1,12 @@
 export type ProjectStatus = "live" | "complete" | "in-progress";
 
 export interface ProjectScreenshot {
+  id?: string;
+  label?: string;
   src: string;
+  previewSrc?: string;
+  thumbnailSrc?: string;
+  srcSet?: string;
   alt: string;
   width: number;
   height: number;

@@ -73,7 +73,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <ProjectHero project={project} />
         <ProjectArtwork projectId={project.id} className="case-artwork" />
         <p className="case-artwork-note">
-          Concept artwork only. Genuine project screenshots are pending.
+          {project.screenshots?.length
+            ? "Concept artwork only. Genuine application screenshots appear in Evidence & media."
+            : "Concept artwork only. Application screenshots are not yet available."}
         </p>
         <CaseStudySection
           id="overview-title"
@@ -180,7 +182,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           role="group"
           aria-label="Project evidence and documentation"
         >
-          <CaseStudySection id="evidence-title" title="Evidence & media">
+          <CaseStudySection
+            id="evidence-title"
+            title="Evidence & media"
+            treatment="media"
+          >
             <ProjectMedia screenshots={project.screenshots} />
             {content.evidenceNote && <p>{content.evidenceNote}</p>}
           </CaseStudySection>

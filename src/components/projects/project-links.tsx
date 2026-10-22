@@ -5,7 +5,7 @@ export function ProjectLinks({ project }: { project: Project }) {
   if (!project.liveUrl && !project.githubUrl)
     return (
       <p className="case-muted">
-        No verified live-site or repository links have been supplied.
+        No public live-site or repository links have been supplied.
       </p>
     );
   return (

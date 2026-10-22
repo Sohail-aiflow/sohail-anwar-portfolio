@@ -1,5 +1,8 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { createClient } from "@sanity/client";
+import { applyApprovedProjectReview } from "../src/content/approved-project-review";
+import { adaptSanityContent } from "../src/lib/content/adapter";
+import { getLocalContent } from "../src/lib/content/local";
 import { portfolioQuery } from "../src/lib/sanity/query";
 
 const routes = [
@@ -18,7 +21,7 @@ const proseSelector = [
   ".education p",
   ".connect-copy",
   ".case-description",
-  ".case-section-content p",
+  ".case-section-content p:not(.sr-only)",
 ].join(", ");
 
 const normalize = (text: string) => text.replace(/\s+/g, " ").trim();
@@ -178,7 +181,7 @@ async function expectStaticProse(
   }
 }
 
-test("real published Sanity prose is preserved in editorial DOM and static HTML", async ({
+test("fresh Sanity prose plus explicit approved local project corrections appear in static HTML", async ({
   page,
   request,
 }) => {
@@ -194,7 +197,26 @@ test("real published Sanity prose is preserved in editorial DOM and static HTML"
     perspective: "published",
     useCdn: false,
   });
-  const published = await client.fetch<PublishedProse>(portfolioQuery);
+  const raw = await client.fetch<PublishedProse>(portfolioQuery);
+  const adapted = adaptSanityContent(raw, getLocalContent());
+  expect(adapted.warnings).toEqual([]);
+  const review = applyApprovedProjectReview(adapted);
+  const published = {
+    ...raw,
+    projects: raw.projects.map((project) => {
+      const expected = review.projects.find(
+        (item) => item.slug === project.slug,
+      )!;
+      return {
+        ...project,
+        description: expected.description,
+        caseStudy: {
+          ...project.caseStudy,
+          overview: expected.caseStudy!.overview,
+        },
+      };
+    }),
+  };
   expect(published.projects).toHaveLength(4);
   expect(published.education).toHaveLength(1);
   await page.goto("/");
